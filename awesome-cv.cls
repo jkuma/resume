@@ -620,21 +620,21 @@
 
 % Define an environment for cvsubentry
 \newenvironment{cvsubentries}{%
-  \vspace{-8.0mm}
+  \vspace{-14.0mm}
   \begin{justify}
 }{%
   \end{justify}
 }
 % Define a subentry of cv information
 % Usage: \cvsubentry{<title>}{<date>}
-\newcommand*{\cvsubentry}[3]{%
+\newcommand*{\cvsubentry}[2]{%
+  \vspace{5.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \vspace{1.0mm}
     \entrypositionstyle{#1} & \entrydatestyle{#2} \\
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#3}} \\
   \end{tabular*}
+  \vspace{1.0mm}
 }
 
 % Define an environment for cvcertification
