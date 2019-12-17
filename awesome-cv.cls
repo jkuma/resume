@@ -620,7 +620,7 @@
 
 % Define an environment for cvsubentry
 \newenvironment{cvsubentries}{%
-  \vspace{-2mm}
+  \vspace{-8.0mm}
   \begin{justify}
 }{%
   \end{justify}
@@ -631,9 +631,9 @@
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \setlength\leftskip{0.2cm}
-    \subentrytitlestyle{#1} & \subentrydatestyle{#2} \\
-  \multicolumn{2}{L{\textwidth - 1em}}{\subdescriptionstyle{#3}}
+    \vspace{1.0mm}
+    \entrypositionstyle{#1} & \entrydatestyle{#2} \\
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#3}} \\
   \end{tabular*}
 }
 
