@@ -214,10 +214,10 @@
 \newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of honor
-\newcommand*{\honortitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+\newcommand*{\certificationtitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
 \newcommand*{\honorpositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\honordatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
-\newcommand*{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\certificationdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+\newcommand*{\certificationlocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
@@ -620,30 +620,25 @@
 
 % Define an environment for cvsubentry
 \newenvironment{cvsubentries}{%
-  \begin{center}
+  \vspace{-2mm}
+  \begin{justify}
 }{%
-  \end{center}
+  \end{justify}
 }
 % Define a subentry of cv information
-% Usage: \cvsubentry{<position>}{<title>}{<date>}{<description>}
-\newcommand*{\cvsubentry}[4]{%
+% Usage: \cvsubentry{<title>}{<date>}
+\newcommand*{\cvsubentry}[3]{%
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \setlength\leftskip{0.2cm}
-    \subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
-      {\subentrydatestyle{#3}}{}
-    \ifthenelse{\equal{#1}{}}
-      {}
-      {\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
-    \ifthenelse{\equal{#4}{}}
-      {}
-      {\multicolumn{2}{L{17.0cm}}{\subdescriptionstyle{#4}} \\}
+    \subentrytitlestyle{#1} & \subentrydatestyle{#2} \\
+  \multicolumn{2}{L{\textwidth - 1em}}{\subdescriptionstyle{#3}}
   \end{tabular*}
 }
 
-% Define an environment for cvhonor
-\newenvironment{cvhonors}{%
+% Define an environment for cvcertification
+\newenvironment{cvcertifications}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2mm}
   \begin{center}
@@ -655,9 +650,9 @@
   \end{center}
 }
 % Define a line of cv information(honor, award or something else)
-% Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
-\newcommand*{\cvhonor}[4]{%
-  \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
+% Usage: \cvcertification{<title>}{<location>}{<date>}
+\newcommand*{\cvcertification}[3]{%
+  \certificationdatestyle{#3} & \certificationtitlestyle{#1} & \certificationlocationstyle{#2} \\
 }
 
 % Define an environment for cvskill
