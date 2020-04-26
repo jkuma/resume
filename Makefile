@@ -4,7 +4,10 @@ CC = xelatex
 DIR = output
 TARGET = JonathanKumaCV.tex
 
-resume:
+init:
+	[[ -d $(DIR) ]] || mkdir $(DIR)
+
+resume: init
 	$(CC) -output-directory=$(DIR) $(TARGET)
 
 clean:
