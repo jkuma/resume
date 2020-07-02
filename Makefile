@@ -7,7 +7,7 @@ TARGET = JonathanKumaCV.tex
 init:
 	[[ -d $(DIR) ]] || mkdir $(DIR)
 
-resume: init
+resume: clean init
 	$(CC) -output-directory=$(DIR) $(TARGET)
 
 clean:
