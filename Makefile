@@ -11,4 +11,4 @@ resume: init
 	$(CC) -output-directory=$(DIR) $(TARGET)
 
 clean:
-	rm -rf $(DIR)/*
+	rm -rf $(DIR)
