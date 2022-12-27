@@ -1,14 +1,19 @@
 .PHONY: resume
 
-CC = xelatex
-DIR = output
-TARGET = JonathanKumaCV.tex
+UID:=$(shell id -u)
+GID:=$(shell id -u)
+
+IMAGE:=resume-xelatex
+DIR:=/resume
+OUTPUT_DIRNAME:=output
+TARGET:=JonathanKumaCV.tex
 
 init:
-	[[ -d $(DIR) ]] || mkdir $(DIR)
+	[[ -d $(OUTPUT_DIRNAME) ]] || mkdir $(OUTPUT_DIRNAME)
 
 resume: clean init
-	$(CC) -output-directory=$(DIR) $(TARGET)
+	docker build . -t $(IMAGE)
+	docker run -u $(UID):$(GID) -v $(shell pwd)/.:$(DIR)/.:rw $(IMAGE) xelatex -output-directory=$(DIR)/$(OUTPUT_DIRNAME) $(TARGET)
 
 clean:
-	rm -rf $(DIR)
+	rm -rf $(OUTPUT_DIRNAME)
