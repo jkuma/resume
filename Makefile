@@ -13,7 +13,7 @@ init:
 
 resume: clean init
 	docker build . -t $(IMAGE)
-	docker run -u $(UID):$(GID) -v $(shell pwd)/.:$(DIR)/.:rw $(IMAGE) xelatex -output-directory=$(DIR)/$(OUTPUT_DIRNAME) $(TARGET)
+	docker run --rm -u $(UID):$(GID) -v $(shell pwd)/.:$(DIR)/.:rw $(IMAGE) xelatex -output-directory=$(DIR)/$(OUTPUT_DIRNAME) $(TARGET)
 
 clean:
 	rm -rf $(OUTPUT_DIRNAME)
